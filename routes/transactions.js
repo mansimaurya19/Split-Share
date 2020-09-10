@@ -2,6 +2,7 @@ const express = require('express');
 const router = express.Router();
 const auth = require('../middleware/auth');
 const { check, validationResult } = require('express-validator');
+var mongoose = require('mongoose');
 
 const User = require('../models/User');
 const Transaction = require('../models/Transaction');
@@ -9,15 +10,57 @@ const Transaction = require('../models/Transaction');
 // @route   GET api/transactions/credits
 // @desc    GET All Transactions where user is C/R
 // @access  Private
-router.get('/credits', auth, (req, res) => {
-  res.send('Get Transactions');
+router.get('/credits', auth, async (req, res) => {
+  try {
+    let credits = await Transaction.aggregate([
+      { $match: { credit: mongoose.Types.ObjectId(req.user.id) } },
+      { $lookup: { from: 'users', localField: 'debit', foreignField: '_id', as: 'debitor' } },
+      { $sort: { date: -1 } },
+      {
+        $project: {
+          credit: 0,
+          debit: 0,
+          debitor: {
+            password: 0,
+            date: 0,
+          },
+        },
+      },
+    ]);
+    //console.log('Output' + credits);
+    res.json(credits);
+  } catch (err) {
+    console.log(err);
+    res.send(500).json({ msg: 'Internal Server Error' });
+  }
 });
 
 // @route   GET api/transactions/debits
 // @desc    GET All Transactions where user is D/R
 // @access  Private
-router.get('/debits', auth, (req, res) => {
-  res.send('Get Transactions');
+router.get('/debits', auth, async (req, res) => {
+  try {
+    let debits = await Transaction.aggregate([
+      { $match: { debit: mongoose.Types.ObjectId(req.user.id) } },
+      { $lookup: { from: 'users', localField: 'credit', foreignField: '_id', as: 'creditor' } },
+      { $sort: { date: -1 } },
+      {
+        $project: {
+          credit: 0,
+          debit: 0,
+          creditor: {
+            password: 0,
+            date: 0,
+          },
+        },
+      },
+    ]);
+    //console.log('Output' + credits);
+    res.json(debits);
+  } catch (err) {
+    console.log(err);
+    res.send(500).json({ msg: 'Internal Server Error' });
+  }
 });
 
 // @route   POST api/transactions
