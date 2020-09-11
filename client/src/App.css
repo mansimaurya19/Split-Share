@@ -5,9 +5,10 @@
 :root {
   --primary-color: #009999;
   --dark-color: #333333;
-  --light-color: #f4f4f4;
+  --light-color: #f4f4f48e;
   --danger-color: #dc3545;
   --success-color: #28a745;
+  --user-color: #b1229e;
 }
 
 * {
@@ -93,6 +94,12 @@ img {
 
 .text-brand {
   font-family: 'Pacifico', cursive;
+}
+
+.text-user {
+  font-family: 'Times New Roman', Times, serif;
+  color: var(--user-color);
+  font-size: x-large;
 }
 
 /* Cards */
