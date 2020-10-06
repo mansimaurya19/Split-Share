@@ -104,9 +104,11 @@ img {
 
 /* Cards */
 .card {
-	padding: 1rem;
-	border: #ccc 1px dotted;
-	margin: 0.7rem 0;
+
+  padding: 1rem;
+  /*border: #ccc 1px dotted;*/
+  margin: 0.7rem 0;
+
 }
 
 /* List */
@@ -226,13 +228,15 @@ img {
 }
 
 .badge {
-	font-size: 0.8rem;
-	padding: 0.2rem 0.7rem;
-	text-align: center;
-	margin: 0.3rem;
-	background: var(--light-color);
-	color: #333;
-	border-radius: 5px;
+
+  font-size: 1rem;
+  padding: 0.2rem 0.7rem;
+  text-align: center;
+  margin: 0.3rem;
+  background: var(--light-color);
+  color: #333;
+  border-radius: 5px;
+
 }
 
 .alert {
@@ -402,6 +406,22 @@ table th {
 
 .navbar-upper {
 	height: 0.4rem;
+}
+
+/* Card Bordering Schemes */
+.blue-border {
+  border: 2px solid rgba(0, 0, 255, 0.5);
+  border-radius: 5px;
+}
+
+.green-border {
+  border: 2px solid rgba(0, 255, 0, 0.5);
+  border-radius: 5px;
+}
+
+.red-border {
+  border: 2px solid rgba(255, 0, 0, 0.5);
+  border-radius: 5px;
 }
 
 /* Animation (Add After) */

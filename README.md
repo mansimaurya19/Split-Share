@@ -1,10 +1,11 @@
-To Run The Project (Backend):
+To Run The Project on Local Machine:
 
     1. Clone the Repo
-    2. ## npm install
-    3. ## npm run server
+    2. ## npm install ##
+    3. ## npm run dev ##
     4. Test the API through Nodemon
 
-Server is hosted on PORT: 5000
+Backend is hosted on PORT: 5000
+Frontend is hosted on PORT: 3000
 
-Browse to: https://localhost:5000/
+Browse to: https://localhost:3000/
