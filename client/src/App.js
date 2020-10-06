@@ -8,6 +8,7 @@ import Login from './components/auth/Login';
 import Alerts from './components/layout/Alerts';
 
 import AuthState from './context/auth/authState';
+import TransState from './context/trans/transState';
 import AlertState from './context/alert/alertState';
 import setAuthToken from './utils/setAuthToken';
 import './App.css';
@@ -18,8 +19,11 @@ if (localStorage.token) {
 
 const App = () => {
   return (
+
     <AuthState>
+
       <AlertState>
+        <TransState>
         <Router>
           <Fragment>
             <Navbar />
@@ -34,6 +38,7 @@ const App = () => {
             </div>
           </Fragment>
         </Router>
+        </TransState>
       </AlertState>
     </AuthState>
   );
