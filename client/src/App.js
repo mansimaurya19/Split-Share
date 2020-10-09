@@ -6,6 +6,7 @@ import About from './components/pages/About';
 import Register from './components/auth/Register';
 import Login from './components/auth/Login';
 import Alerts from './components/layout/Alerts';
+import Transactions from './components/sections/Transactions';
 
 import AuthState from './context/auth/authState';
 import TransState from './context/trans/transState';
@@ -19,25 +20,24 @@ if (localStorage.token) {
 
 const App = () => {
   return (
-
     <AuthState>
-
       <AlertState>
         <TransState>
-        <Router>
-          <Fragment>
-            <Navbar />
-            <div className='container'>
-              <Alerts />
-              <Switch>
-                <Route exact path='/' component={Home} />
-                <Route exact path='/about' component={About} />
-                <Route exact path='/register' component={Register} />
-                <Route exact path='/login' component={Login} />
-              </Switch>
-            </div>
-          </Fragment>
-        </Router>
+          <Router>
+            <Fragment>
+              <Navbar />
+              <div className='container'>
+                <Alerts />
+                <Switch>
+                  <Route exact path='/' component={Home} />
+                  <Route exact path='/about' component={About} />
+                  <Route exact path='/register' component={Register} />
+                  <Route exact path='/login' component={Login} />
+                  <Route exact path='/total' component={Transactions} />
+                </Switch>
+              </div>
+            </Fragment>
+          </Router>
         </TransState>
       </AlertState>
     </AuthState>
