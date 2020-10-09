@@ -12,3 +12,5 @@ export const LOGOUT = 'LOGOUT';
 export const CLEAR_ERRORS = 'CLEAR_ERRORS';
 export const CREDIT_FETCH = 'CREDIT_FETCH';
 export const CREDIT_FAIL = 'CREDIT_FAIL';
+export const DEBIT_FETCH = 'DEBIT_FETCH';
+export const DEBIT_FAIL = 'DEBIT_FAIL';
