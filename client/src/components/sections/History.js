@@ -1,6 +1,7 @@
 import React, { Fragment, useContext, useEffect } from 'react';
 import TransContext from '../../context/trans/transContext';
 import Transactions from './Transactions';
+import { Button } from '@material-ui/core';
 
 const History = () => {
   const transContext = useContext(TransContext);
@@ -24,11 +25,20 @@ const History = () => {
           {!cloading && credits !== null
             ? credits.map((cred) => (
                 <div key={cred._id} className='card green-border'>
-                  <i>{cred.date.substring(0, 10)}: </i>
-                  {cred.debitor[0].name}({cred.debitor[0].phone})-
-                  <span className='text-left'>
+                  <strong>{cred.date.substring(0, 10)}: </strong>
+                  {cred.debitor[0].name}({cred.debitor[0].phone})
+                  <div className='float-right text-success'>
                     <strong>Rs. {cred.amount}</strong>
-                  </span>
+                    {!cred.cleared ? (
+                      <Button variant='outlined' color='primary'>
+                        Paid
+                      </Button>
+                    ) : (
+                      <span className='m-1'>
+                        <i className='fas fa-check-circle fa-2x'></i>
+                      </span>
+                    )}
+                  </div>
                 </div>
               ))
             : 'Loading..'}
@@ -40,11 +50,20 @@ const History = () => {
           {!dloading && debits !== null
             ? debits.map((debt) => (
                 <div key={debt._id} className='card red-border'>
-                  <i>{debt.date.substring(0, 10)}: </i>
-                  {debt.creditor[0].name}({debt.creditor[0].phone})-
-                  <span className='text-left'>
+                  <strong>{debt.date.substring(0, 10)}: </strong>
+                  {debt.creditor[0].name}({debt.creditor[0].phone})
+                  <section className='float-right text-danger'>
                     <strong>Rs. {debt.amount}</strong>
-                  </span>
+                    {!debt.cleared ? (
+                      <Button variant='outlined' color='primary'>
+                        Paid
+                      </Button>
+                    ) : (
+                      <span className='m-1'>
+                        <i className='fas fa-check-circle fa-2x'></i>
+                      </span>
+                    )}
+                  </section>
                 </div>
               ))
             : 'Loading..'}

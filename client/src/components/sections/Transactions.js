@@ -27,12 +27,13 @@ const Transactions = () => {
       <Grid container justify='center'>
         <Grid item component={Card} xs={12} md={5} elevation={8}>
           <CardContent className='bg-success'>
-            <Typography variant='h5' className='text-center' gutterBottom>
+            <Typography variant='h6' className='text-center' gutterBottom>
               You'll Get
               <hr />
             </Typography>
 
             <Typography variant='h3'>
+              Rs{' '}
               {!cloading && credits !== null ? (
                 <CountUp start={0} end={credSum} duration={2.5} separator=',' />
               ) : (
@@ -44,12 +45,13 @@ const Transactions = () => {
         &nbsp;&nbsp;&nbsp;
         <Grid item component={Card} xs={12} md={5} elevation={8}>
           <CardContent className='bg-danger'>
-            <Typography variant='h5' className='text-center' gutterBottom>
+            <Typography variant='h6' className='text-center' gutterBottom>
               You'll Pay
               <hr />
             </Typography>
 
             <Typography variant='h3'>
+              Rs{' '}
               {!dloading && debits !== null ? (
                 <CountUp start={0} end={debtSum} duration={2.5} separator=',' />
               ) : (
