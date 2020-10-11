@@ -7,7 +7,7 @@ import Register from './components/auth/Register';
 import Login from './components/auth/Login';
 import Alerts from './components/layout/Alerts';
 import Transactions from './components/sections/Transactions';
-
+import Create from './components/pages/Create'
 import AuthState from './context/auth/authState';
 import TransState from './context/trans/transState';
 import AlertState from './context/alert/alertState';
@@ -33,6 +33,8 @@ const App = () => {
                   <Route exact path='/about' component={About} />
                   <Route exact path='/register' component={Register} />
                   <Route exact path='/login' component={Login} />
+                  <Route exact path='/create' component={Create} />
+                 
                 </Switch>
               </div>
             </Fragment>
