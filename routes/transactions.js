@@ -124,7 +124,6 @@ router.put('/:id', auth, async (req, res) => {
     transaction = await Transaction.findByIdAndUpdate(req.params.id, { cleared: true }, { new: true });
 
     res.json(transaction);
-    
   } catch (error) {
     console.log(error);
     res.status(500).json({ msg: 'Server error' });

@@ -14,5 +14,3 @@ export const CREDIT_FETCH = 'CREDIT_FETCH';
 export const CREDIT_FAIL = 'CREDIT_FAIL';
 export const DEBIT_FETCH = 'DEBIT_FETCH';
 export const DEBIT_FAIL = 'DEBIT_FAIL';
-export const UPDATE_SUCCESS = 'UPDATE_SUCCESS';
-export const UPDATE_FAIL = 'UPDATE_FAIL';

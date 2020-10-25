@@ -6,7 +6,7 @@ import { Button } from '@material-ui/core';
 const History = () => {
   const transContext = useContext(TransContext);
 
-  const { getCredits, credits, cloading, debits, dloading, getDebits, markComplete } = transContext;
+  const { getCredits, credits, cloading, debits, dloading, getDebits } = transContext;
 
   useEffect(() => {
     getCredits();
@@ -30,8 +30,8 @@ const History = () => {
                   <div className='float-right text-success'>
                     <strong>Rs. {cred.amount}</strong>
                     {!cred.cleared ? (
-                      <Button variant='outlined' color='primary' onClick={() => markComplete(cred._id)}>
-                        <b>Paid</b>
+                      <Button variant='outlined' color='primary'>
+                        Paid
                       </Button>
                     ) : (
                       <span className='m-1'>
@@ -52,18 +52,18 @@ const History = () => {
                 <div key={debt._id} className='card red-border'>
                   <strong>{debt.date.substring(0, 10)}: </strong>
                   {debt.creditor[0].name}({debt.creditor[0].phone})
-                  <div className='float-right text-danger'>
+                  <section className='float-right text-danger'>
                     <strong>Rs. {debt.amount}</strong>
                     {!debt.cleared ? (
-                      <Button variant='outlined' color='primary' onClick={() => markComplete(debt._id)}>
-                        <b>Paid</b>
+                      <Button variant='outlined' color='primary'>
+                        Paid
                       </Button>
                     ) : (
                       <span className='m-1'>
                         <i className='fas fa-check-circle fa-2x'></i>
                       </span>
                     )}
-                  </div>
+                  </section>
                 </div>
               ))
             : 'Loading..'}
